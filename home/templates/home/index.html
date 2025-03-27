@@ -1,0 +1,799 @@
+{% load static %}
+
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>AgroVision</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <!-- Navbar -->
+  <nav class="bg-green-700 text-white p-4 flex justify-between items-center">
+   <h1 class="text-2xl font-bold"data-translate="agrovision">AgroVision</h1>
+   <div>
+    <a href="#services" class="px-4"data-translate="services">Services</a>
+    <a href="#blogs" class="px-4"data-translate="blogs">Our Blogs</a>
+    <a href="#contact" class="px-4"data-translate="contact">Contact</a>
+    <a href="#about" class="px-4"data-translate="about">About Us</a>
+    <a class="bg-blue-500 text-white px-4 py-2 rounded m-1" href="{% url 'login' %}"data-translate="login">Login</a>
+    <a class="bg-gray-500 text-white px-4 py-2 rounded m-1" href="{% url 'signup' %}"data-translate="signup">Signup</a>
+    {% if user.is_authenticated %}
+    <a class="bg-red-500 text-white px-4 py-2 rounded m-1" href="{% url 'logout' %}"data-translate="logout">Logout</a>
+    {% endif %}
+   </div>
+
+    <!-- Language Switcher -->
+    <select id="languageSelect" class="ml-4 bg-white text-black px-2 py-1 rounded">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="mr">Marathi</option>
+    </select>
+</div>
+</nav>
+
+  
+  <div class="bg-gradient-to-b from-green-200 to-green-500 min-h-screen text-gray-800">
+  <!-- Hero Section -->
+  <section class="h-[500px] flex items-center justify-center relative">
+   <img alt="Aerial view of a lush green agricultural field" class="absolute inset-0 w-full h-full object-cover z-0" height="500" src="{% static 'home/images/front1.jpg' %}" width="1500"/>
+   <div class="text-center text-white z-10">
+    <h1 class="text-5xl font-bold"data-translate="heading">Precision Agriculture Using Machine Learning</h1>
+    <p class="mt-4"data-translate="description">Empowering Farmers with Technology</p>
+    <button class="mt-4 bg-green-500 px-6 py-3 rounded text-lg"data-translate="explore_more">Explore More</button>
+   </div>
+  </section> 
+
+  {% comment %} <div class="bg-gradient-to-b from-green-200 to-green-500 min-h-screen text-gray-800"> {% endcomment %}
+    {% comment %} <!-- Hero Section -->
+    <section class="relative flex items-center justify-center h-[80vh] bg-cover bg-center"
+      style="background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Ffree-photos%2Fsustainable-agriculture&psig=AOvVaw2H7D5xmkjZG0plpD6swk8q&ust=1742293553410000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjCj7bzkIwDFQAAAAAdAAAAABAE');">
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+      <div class="relative z-10 text-center text-white p-10">
+        <h1 class="text-5xl font-bold mb-4 animate-pulse">Welcome to AgriSmart</h1>
+        <p class="text-xl mb-8 animate-fade-in">Empowering Agriculture with AI & Machine Learning</p>
+      </div>
+    </section> {% endcomment %}
+
+    <!-- About Us Section -->
+    {% load static %}
+<section class="py-20 bg-white text-gray-700">
+    <div class="container mx-auto px-6">
+        <h2 class="text-5xl font-bold text-center mb-12 text-green-700 animate-fade-in"data-translate="about_heading">About AgroVision</h2>
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+            <!-- Text Section -->
+            <div class="space-y-6 animate-slide-in-left">
+                <p class="text-lg leading-relaxed mb-4"data-translate="about_paragraph1">🌱 <strong>AgroVision</strong> is a cutting-edge AI-powered platform dedicated to enhancing agricultural productivity and sustainability. Our mission is to provide farmers and agricultural professionals with advanced tools for real-time monitoring, precision farming, disease detection, and crop recommendation.</p>
+                <p class="text-lg leading-relaxed mb-4"data-translate="about_paragraph2">🤖 Founded by a passionate team of engineers and data scientists, AgroVision aims to revolutionize agriculture by integrating <strong>Artificial Intelligence</strong> and <strong>Machine Learning</strong> into everyday farming practices. Our platform offers a range of features designed to simplify decision-making, reduce risks, and improve efficiency.</p>
+                <p class="text-lg leading-relaxed"data-translate="about_paragraph3">🌾 We believe that technology can empower the agricultural sector to face the challenges of the future and ensure food security for generations to come.</p>
+            </div>
+
+           
+            
+            <!-- Image Section -->
+            <div class="rounded-lg overflow-hidden shadow-lg animate-slide-in-right">
+                <img src="{% static 'home/images/about.jpg' %}" alt="About AgroVision">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Animation Styles (Add this to your CSS file if not using Tailwind CSS plugins) -->
+<style>
+    @keyframes slide-in-left {
+        0% { transform: translateX(-100%); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slide-in-right {
+        0% { transform: translateX(100%); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    .animate-slide-in-left { animation: slide-in-left 1s ease-out; }
+    .animate-slide-in-right { animation: slide-in-right 1s ease-out; }
+    .animate-fade-in { animation: fade-in 1s ease-out; }
+</style>
+
+
+  <!-- Services Section -->
+  <section id="services" class="p-10 text-center bg-gray-100">
+   <h2 class="text-3xl font-bold mb-8"data-translate="services">Our Services</h2>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white shadow-xl rounded-lg p-6">
+     <h3 class="text-xl font-bold"data-translate="crop_recommendation">Crop Recommendation</h3>
+     <img src="{% static 'home/images/crop1.jpg' %}" alt="Crop Recommendation Image" class="w-full h-48 object-cover rounded mb-4">
+     <p data-translate="crop">Find the best crops to cultivate based on various conditions.</p>
+     <a href="{% url 'crop_recommend' %}">
+      <button class="mt-4 bg-green-500 px-4 py-2 rounded"data-translate="explore">Explore</button>
+     </a>
+    </div>
+    <div class="bg-white shadow-xl rounded-lg p-6">
+     <h3 class="text-xl font-bold"data-translate="fertilizer_recommendation">Fertilizer Recommendation</h3>
+     <img src="{% static 'home/images/fertilizer.jpg' %}" alt="Fertilizer Recommendation Image" class="w-full h-48 object-cover rounded mb-4">
+     <p data-translate="fertilizer">Discover the most suitable fertilizers for your soil and crops.</p>
+     <a href="{% url 'fertilizer_recommendation' %}">
+      <button class="mt-4 bg-green-500 px-4 py-2 rounded"data-translate="explore">Explore</button>
+     </a>
+    </div>
+    <div class="bg-white shadow-xl rounded-lg p-6">
+     <h3 class="text-xl font-bold"data-translate="disease_detection">Disease Detection</h3>
+     <img src="{% static 'home/images/disease.jpg' %}"alt="Disease Detection Image" class="w-full h-48 object-cover rounded mb-4">
+     <p data-translate="disease">Identify crop diseases and get recommendations for their cure.</p>
+     <a href="{% url 'disease_detection' %}">
+      <button class="mt-4 bg-green-500 px-4 py-2 rounded"data-translate="explore">Explore</button>
+     </a>
+    </div>
+   </div>
+  </section>
+
+  <!-- Our Blogs Section -->
+      <title>Our Blogs - AgroVision</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"> 
+      <style>
+          .bg-banner {
+              background-image: url("{% static 'home/images/front1.jpg' %}");
+              background-size: cover;
+              background-position: center;
+              position: relative;
+          }
+  
+          .banner-overlay {
+              position: absolute;
+              inset: 0;
+              background: rgba(34, 197, 94, 0.7);
+              backdrop-filter: blur(2px);
+          }
+  
+          .banner-text {
+              position: relative;
+              z-index: 10;
+          }
+  
+          .animate-fade-in {
+              animation: fadeIn 1s ease-in-out;
+          }
+  
+          @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+          }
+  
+          .bg-card {
+              background: url('https://source.unsplash.com/800x600/?plants,farming') no-repeat center center;
+              background-size: cover;
+          }
+      </style>
+  </head>
+   <section id="services" class="p-10 text-center bg-gray-100">
+      <!-- Banner Section -->
+      <section class="py-20 bg-banner text-white text-center relative">
+          <div class="banner-overlay"></div>
+          <div class="container mx-auto banner-text">
+              <h1 class="text-5xl font-bold mb-4 animate-fade-in"data-translate="Educational">Educational Hub for Young Minds</h1>
+              <p class="text-xl mb-6 animate-fade-in"data-translate="Education">Explore the fascinating world of agriculture through articles, videos, and fun activities!</p>
+             
+          </div>
+      </section> 
+  
+      <!-- Content Section -->
+      <style>
+        body {
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 3rem;
+        }
+    
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        .card {
+            background: linear-gradient(135deg, #ffffff, #f0f4f8);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+    
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+    
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 10px;
+        }
+    
+        .card-text {
+            font-size: 0.95rem;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+    
+        .card-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+    
+        .card-link:hover {
+            color: #1d4ed8;
+        }
+    
+      </style>
+      <section class="container mx-auto py-10 px-6 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4"data-translate="intro_to_agriculture">Introduction to Agriculture</h2>
+              <p data-translate="intro_agri">Learn about the basics of farming, crops, and sustainable agriculture practices.</p>
+              <a href="https://en.wikipedia.org/wiki/Agriculture_in_India" class="text-blue-500 mt-4 inline-block"data-translate="read">Read More</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in"> 
+              <h2 class="text-2xl font-bold mb-4"data-translate="farming_techniques">Farming Techniques</h2>
+              <p data-translate="farming_tech">Explore different farming methods and how technology is making farming more efficient.</p>
+              <a href="https://youtu.be/RXNjGkJe7fY?si=v9oVZGy2WAgt6ADv" class="text-blue-500 mt-4 inline-block"data-translate="Video">Watch Video</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4"data-translate="interactive_games">Interactive Games</h2>
+              <p data-translate="games">Play fun games that teach you about growing crops and managing farms!</p>
+              <a href="https://play.google.com/store/apps/details?id=com.agrium.farmers&pli=1" class="text-blue-500 mt-4 inline-block"data-translate="Play">Play Now</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4"data-translate="sustainable_agriculture">Sustainable Agriculture</h2>
+              <p data-translate="sustainability">Understand the importance of sustainable farming practices and their impact on the environment.</p>
+              <a href="https://sarep.ucdavis.edu/sustainable-ag" class="text-blue-500 mt-4 inline-block"data-translate="learn">Learn More</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4"data-translate="soil_health">Soil Health & Management</h2>
+              <p data-translate="soil">Learn about the importance of soil health and how to maintain it for better crops.</p>
+              <a href="https://extension.psu.edu/managing-soil-health-concepts-and-practices" class="text-blue-500 mt-4 inline-block"data-translate="Explore">Explore</a>
+          </div>
+  
+          <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
+              <h2 class="text-2xl font-bold mb-4"data-translate="future_of_farming">Future of Farming</h2>
+              <p data-translate="future">Discover how artificial intelligence and modern technology are shaping the future of agriculture.</p>
+              <a href="https://youtu.be/iojOWygE51I?si=BACuQHi4_NsMB8Sz" class="text-blue-500 mt-4 inline-block"data-translate="Video">Watch Video</a>
+          </div>
+      </section>
+  {% comment %} </html> {% endcomment %}
+  
+
+  <!-- Contact Form Section in index.html -->
+  <style>
+    .contact-section {
+        margin: 4rem auto;
+        padding: 2rem;
+        background: #f0f4f8;
+        border-radius: 12px;
+        max-width: 600px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .contact-section h2 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1a202c;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        outline: none;
+        font-size: 1rem;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+
+    .contact-form button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+        background-color: #2563eb;
+    }
+</style>
+<div class="container mx-auto py-10">
+    <h1 class="text-3xl font-bold mb-4 text-center"data-translate="Contact">Contact Us</h1>
+    
+    {% if messages %}
+        <div class="mb-4">
+            {% for message in messages %}
+                <div class="text-green-600 bg-green-100 p-2 rounded-lg">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="POST" action="" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="name" class="block text-lg font-semibold"data-translate="name">Your Name</label>
+            <input type="text" name="name" id="name" required class="w-full p-2 border border-gray-300 rounded-md">
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-lg font-semibold" data-translate="email">Your Email</label>
+            <input type="email" name="email" id="email" required class="w-full p-2 border border-gray-300 rounded-md">
+        </div>
+        <div class="mb-4">
+            <label for="message" class="block text-lg font-semibold"data-translate="Message">Your Message</label>
+            <textarea name="message" id="message" rows="5" required class="w-full p-2 border border-gray-300 rounded-md"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Send Message</button>
+    </form>
+</div>
+
+<!-- Chatbot Integration Start -->
+<div class="chatbot">
+    <div class="chat-header">AgroVision Chatbot</div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-footer">
+        <input type="text" id="messageInput" class="message-input" placeholder="Type your message...">
+        <button id="sendButton">Send</button>
+        <i id="micButton" class="fas fa-microphone mic-button"></i>
+    </div>
+</div>
+<style>
+    /* Chatbot Icon Styling */
+.chatbot-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    transition: transform 0.2s;
+}
+
+.chatbot-icon:hover {
+    transform: scale(1.1);
+}
+
+.chatbot-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Chatbot Box Styling */
+.chatbot {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: none;
+    z-index: 9999;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.chat-body {
+    height: 300px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* User message styling */
+.user-message {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 80%;
+    align-self: flex-end;
+}
+
+/* Bot message styling */
+.bot-message {
+    background-color: #e0e0e0;
+    color: black;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 80%;
+    align-self: flex-start;
+}
+
+.chat-footer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.message-input {
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+.mic-button {
+    margin-left: 5px;
+    cursor: pointer;
+    color: #4CAF50;
+    transition: transform 0.2s;
+}
+
+.mic-button:hover {
+    transform: scale(1.1);
+}
+
+</style>
+<div class="chatbot-icon" id="chatbotIcon">
+    <img src="{% static 'home/images/chatbot.jpg' %}"alt="Chatbot Icon">
+</div>
+
+<script>
+    const messages = {
+        hi: "Hello! How can I assist you today? 😊",
+        crop_recommendation: "Please provide your soil type, temperature, and humidity. I'll recommend the best crops for you. 🌱",
+        fertilizer_recommendation: "Let me know your crop type and soil condition, and I'll suggest the most suitable fertilizers. 🧪",
+        disease_detection: "Upload an image of the crop, and I'll detect any diseases present. 📸",
+        unknown: "I'm sorry, I didn't understand that. Can you try asking differently? 🤔",
+        thank_you: "You're welcome! Let me know if you need more help. 🌼",
+        goodbye: "Goodbye! Have a great day and happy farming! 🌻"
+    };
+    
+    const knowledgeBase = {
+            crops: {
+                "wheat": "🌾 Wheat is a cereal grain grown in temperate regions. It requires well-drained loamy soil and moderate temperatures. Ideal planting time is during cool, dry seasons. Water moderately and avoid overwatering.",
+                "rice": "🍚 Rice grows well in warm, humid climates with abundant water supply. It prefers clayey or loamy soil with good water retention. Regular irrigation is essential for healthy growth.",
+                "maize": "🌽 Maize (corn) thrives in fertile, well-drained soil with adequate sunlight. It requires consistent moisture throughout its growth stages. Fertilizers rich in nitrogen and potassium are beneficial.",
+                "potato": "🥔 Potato grows best in cool climates with well-drained sandy loam soil. Ensure good irrigation but avoid waterlogging. Harvest after flowering when leaves begin to yellow.",
+                "tomato": "🍅 Tomato prefers well-drained, fertile soil with full sunlight. Requires regular watering but avoid overhead watering to prevent diseases. Apply balanced fertilizers for better yield.",
+                "banana": "🍌 Banana grows best in tropical regions with rich, moist soil. Requires consistent watering and fertilizer application for optimal growth. Ensure good drainage to avoid root rot.",
+                "grape": "🍇 Grapes thrive in well-drained sandy-loam soil with full sunlight. Regular pruning and pest control are essential for high-quality yield.",
+                "apple": "🍏 Apple trees prefer cool climates with well-drained soil. Apply fertilizers containing nitrogen and phosphorus during the growing season. Prune regularly for healthy growth.",
+                "orange": "🍊 Orange trees grow well in warm, sunny climates with well-drained sandy soil. Apply fertilizers rich in nitrogen, potassium, and phosphorus for better fruit production.",
+                "basil": "🌿 Basil grows best in warm, sunny environments with well-drained, fertile soil. Water regularly but avoid waterlogging. Frequent pruning encourages bushier growth."
+            },
+            fertilizers: {
+                "urea": "Urea is a nitrogen-based fertilizer suitable for various crops. It promotes leaf growth and is best applied before irrigation or rain for optimal absorption. Overuse can harm plants.",
+                "dap": "Di-Ammonium Phosphate (DAP) provides nitrogen and phosphorus. It boosts root development and is widely used during the early growth stages of crops.",
+                "potash": "Potash provides potassium which enhances root strength and improves resistance to drought and disease. Essential for crops like potatoes and sugarcane.",
+                "superphosphate": "Superphosphate is a phosphorus-based fertilizer that improves root growth, flowering, and fruiting. Suitable for all crops, especially during early growth stages.",
+                "ammonium nitrate": "Ammonium Nitrate is a powerful nitrogen fertilizer promoting rapid growth. Ideal for leafy vegetables and cereal crops. Apply with caution to avoid over-fertilization.",
+                "compost": "Compost is an organic fertilizer made from decomposed plant and animal matter. It improves soil structure, enhances nutrient availability, and promotes healthy plant growth."
+            },
+            diseases: {
+                "leaf blight": "Leaf Blight affects crops like rice,apple,maize. Symptoms include yellowing and browning of leaves. Cure: Use fungicides and plant resistant varieties. Maintain proper spacing and remove infected leaves.",
+                "powdery mildew": "Powdery Mildew causes white, powdery growth on leaves. Cure: Apply sulfur-based fungicides and maintain proper plant spacing. Improve air circulation to reduce infection risk.",
+                "bacterial wilt": "Bacterial Wilt causes wilting in crops like tomato and potato. Cure: Use disease-free seeds, practice crop rotation, and maintain soil health with organic amendments.",
+                "black rot": "Black Rot affects crops like cabbage and broccoli. Symptoms include dark lesions on leaves. Cure: Apply copper-based fungicides and practice crop rotation.",
+                "root rot": "Root Rot occurs due to overwatering and poor drainage. Cure: Improve drainage, reduce watering, and apply appropriate fungicides if necessary.",
+                "rust": "Rust appears as reddish-orange spots on leaves, affecting various crops. Cure: Use resistant varieties, remove affected leaves, and apply fungicides when needed.",
+                "early blight": "Early Blight affects tomatoes and potatoes, causing dark lesions on leaves. Cure: Use fungicides, ensure proper spacing, and remove infected leaves promptly.",
+                "late blight": "Late Blight rapidly spreads in moist conditions, affecting potatoes and tomatoes. Cure: Apply fungicides and ensure adequate air circulation around plants.",
+                "anthracnose": "Anthracnose causes dark, sunken spots on fruits and leaves. Cure: Prune infected parts, apply fungicides, and avoid overhead watering.",
+                "downy mildew": "Downy Mildew causes yellowing and wilting of leaves. Cure: Apply appropriate fungicides and improve air circulation around plants."
+            }
+        };
+        
+
+    const chatBody = document.getElementById('chatBody');
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendButton');
+    const micButton = document.getElementById('micButton');
+
+    sendButton.addEventListener('click', () => {
+        const userMessage = messageInput.value.trim();
+        if (!userMessage) return;
+
+        appendMessage('user', userMessage);
+        messageInput.value = '';
+
+        const botReply = getBotReply(userMessage.toLowerCase());
+        appendMessage('bot', botReply);
+    });
+
+    micButton.addEventListener('click', () => {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.start();
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            messageInput.value = transcript;
+            const botReply = getBotReply(transcript.toLowerCase());
+            appendMessage('user', transcript);
+            appendMessage('bot', botReply);
+        };
+
+        recognition.onerror = (event) => {
+            console.error('Speech recognition error:', event.error);
+        };
+    });
+
+    function appendMessage(sender, message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+        messageElement.innerText = message;
+        chatBody.appendChild(messageElement);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+    
+    function getBotReply(message) {
+        if (message.includes('hello') || message.includes('hi')) return messages.hi;
+        if (message.includes('crop')) return messages.crop_recommendation;
+        if (message.includes('fertilizer')) return messages.fertilizer_recommendation;
+        if (message.includes('disease')) return messages.disease_detection;
+
+        // Checking for crop details
+        for (const crop in knowledgeBase.crops) {
+            if (message.includes(crop)) return knowledgeBase.crops[crop];
+        }
+
+        // Checking for fertilizer details
+        for (const fertilizer in knowledgeBase.fertilizers) {
+            if (message.includes(fertilizer)) return knowledgeBase.fertilizers[fertilizer];
+        }
+
+        // Checking for disease details
+        for (const disease in knowledgeBase.diseases) {
+            if (message.includes(disease)) return knowledgeBase.diseases[disease];
+        }
+
+        return messages.unknown;
+    }
+
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    const chatbot = document.querySelector('.chatbot');
+
+    chatbotIcon.addEventListener('click', () => {
+        if (chatbot.style.display === 'none' || chatbot.style.display === '') {
+            chatbot.style.display = 'block';
+        } else {
+            chatbot.style.display = 'none';
+        }
+    });
+</script>
+
+<!-- Chatbot Integration End -->
+
+  <script>
+    const translations = {
+        en: {
+            agrovision: "AgroVision",
+            services: "Services",
+            blogs: "Our Blogs",
+            contact: "Contact",
+            about: "About Us",
+            login: "Login",
+            signup: "Signup",
+            logout: "Logout",
+            heading: "Precision Agriculture Using Machine Learning",
+            description: "Empowering Farmers with Technology",
+            explore_more: "Explore More",
+            services:"Our Services",
+            about_heading: "About AgroVision",
+            about_paragraph1: "🌱 AgroVision is a cutting-edge AI-powered platform dedicated to enhancing agricultural productivity and sustainability...",
+            about_paragraph2: "🤖 Founded by a passionate team of engineers and data scientists, AgroVision aims to revolutionize agriculture by integrating Artificial Intelligence and Machine Learning...",
+            about_paragraph3: "🌾 We believe that technology can empower the agricultural sector to face the challenges of the future and ensure food security for generations to come.",
+            crop_recommendation: "Crop Recommendation",
+            crop:"Find the best crops to cultivate based on various conditions.",
+            fertilizer_recommendation: "fertilizer recommendation",
+            fertilizer:"Discover the most suitable fertilizers for your soil and crops.",
+            disease_detection: "Disease Detection",
+            disease:"Identify crop diseases and get recommendations for their cure.",
+            intro_to_agriculture: "Introduction to Agriculture",
+            intro_agri:"Learn about the basics of farming, crops, and sustainable agriculture practices.",
+            farming_techniques: "Farming Techniques",
+            farming_tech:"Explore different farming methods and how technology is making farming more efficient.",
+            interactive_games: "Interactive Games",
+            games:"Play fun games that teach you about growing crops and managing farms!",
+            sustainable_agriculture: "Sustainable Agriculture",
+            sustainability:"Understand the importance of sustainable farming practices and their impact on the environment.",
+            soil:"Learn about the importance of soil health and how to maintain it for better crops.",
+            soil_health: "Soil Health & Management",
+            future:"Discover how artificial intelligence and modern technology are shaping the future of agriculture.",
+            future_of_farming: "Future of Farming",
+            explore:"Explore",
+            Educational:"Educational Hub for Young Minds",
+            Education:"Explore the fascinating world of agriculture through articles, videos, and fun activities!",
+            Contact:"Contact Us",
+            name:"Your Name",
+            email:"Your Email",
+            Message:"Your Message",
+            Send:"Send Message",
+            read:"Read More",
+            learn:"Learn More",
+            Video:"Watch Video",
+            Play:"Play now",
+
+        },
+        hi: {
+            agrovision: "एग्रोविजन",
+            services: "सेवाएं",
+            blogs: "हमारे ब्लॉग",
+            contact: "संपर्क करें",
+            about: "हमारे बारे में",
+            login: "लॉगिन",
+            signup: "साइन अप करें",
+            logout: "लॉग आउट",
+            heading: "मशीन लर्निंग का उपयोग करके सटीक कृषि",
+            description: "किसानों को तकनीक के साथ सशक्त बनाना",
+            explore_more: "और जानें",
+            services: "हमारी सेवाएं",
+            about_heading: "एग्रोविजन के बारे में",
+            about_paragraph1: "🌱 एग्रोविजन कृषि उत्पादकता और स्थिरता को बढ़ाने के लिए एआई-संचालित प्लेटफार्म है...",
+            about_paragraph2: "🤖 इंजीनियरों और डेटा वैज्ञानिकों की एक भावुक टीम द्वारा स्थापित, एग्रोविजन...",
+            about_paragraph3: "🌾 हम मानते हैं कि तकनीक भविष्य की चुनौतियों का सामना करने के लिए कृषि क्षेत्र को सशक्त कर सकती है...",
+            crop_recommendation: "फसल सिफारिश",
+            crop: "विभिन्न परिस्थितियों के आधार पर खेती के लिए सर्वोत्तम फसलों का पता लगाएं।",
+            fertilizer_recommendation: "उर्वरक सिफारिश",
+            fertilizer: "आपकी मिट्टी और फसलों के लिए सबसे उपयुक्त उर्वरकों का पता लगाएं।",
+            disease_detection: "रोग पहचान",
+            disease: "फसल की बीमारियों की पहचान करें और उनके उपचार के लिए सिफारिशें प्राप्त करें।",
+            intro_to_agriculture: "कृषि का परिचय",
+            intro_agri: "खेती, फसलें और स्थायी कृषि प्रथाओं के बारे में जानें।",
+            farming_techniques: "खेती की तकनीकें",
+            farming_tech: "विभिन्न खेती के तरीकों का अन्वेषण करें और कैसे तकनीक खेती को और अधिक कुशल बना रही है।",
+            interactive_games: "इंटरैक्टिव खेल",
+            games: "मजेदार खेल खेलें जो आपको फसल उगाने और खेतों का प्रबंधन करना सिखाते हैं!",
+            sustainable_agriculture: "सतत कृषि",
+            sustainability: "सतत कृषि प्रथाओं के महत्व और उनके पर्यावरण पर प्रभाव को समझें।",
+            soil: "मिट्टी के स्वास्थ्य का महत्व और बेहतर फसलों के लिए इसे कैसे बनाए रखें, जानें।",
+            soil_health: "मिट्टी का स्वास्थ्य और प्रबंधन",
+            future: "कृत्रिम बुद्धिमत्ता और आधुनिक तकनीक कैसे कृषि के भविष्य को आकार दे रही है, जानें।",
+            future_of_farming: "खेती का भविष्य",
+            explore: "खोजें",
+            Educational: "नवीन दिमागों के लिए शैक्षिक केंद्र",
+            Education: "लेखों, वीडियो और मजेदार गतिविधियों के माध्यम से कृषि की रोमांचक दुनिया का अन्वेषण करें!",
+            Contact: "हमसे संपर्क करें",
+            name: "आपका नाम",
+            email: "आपका ईमेल",
+            Message: "आपका संदेश",
+            Send: "संदेश भेजें",
+            read: "अधिक पढ़ें",
+            learn: "अधिक जानें",
+            Video: "वीडियो देखें",
+            Play: "अभी खेलें",
+
+        },
+        mr: {
+            agrovision: "एग्रोव्हिजन",
+            services: "सेवा",
+            blogs: "आमचे ब्लॉग",
+            contact: "संपर्क साधा",
+            about: "आमच्याबद्दल",
+            login: "लॉगिन",
+            signup: "साइन अप करा",
+            logout: "लॉगआउट",
+            heading: "यंत्रज्ञान वापरून अचूक शेती",
+            description: "तंत्रज्ञानासह शेतकऱ्यांना सशक्त करणे",
+            explore_more: "अधिक शोधा",
+            services:"आमच्या सेवा",
+            about_heading: "एग्रोव्हिजन बद्दल",
+            about_paragraph1: "🌱 एग्रोव्हिजन हे कृत्रिम बुद्धिमत्तेवर आधारित व्यासपीठ आहे जे शेती उत्पादनक्षमता आणि शाश्वतता सुधारण्यासाठी समर्पित आहे...",
+            about_paragraph2: "🤖 अभियंते आणि डेटा शास्त्रज्ञांच्या एका आवडीने बनवलेल्या टीमने एग्रोव्हिजन स्थापन केले आहे...",
+            about_paragraph3: "🌾 आम्हाला विश्वास आहे की तंत्रज्ञान शेती क्षेत्राला भविष्यातील आव्हाने सामोरे जाण्यासाठी सशक्त बनवू शकते...",
+            crop_recommendation: "पीक शिफारस",
+            crop: "विविध परिस्थितींवर आधारित लागवड करण्यासाठी सर्वोत्तम पिकांचा शोध घ्या.",
+            fertilizer_recommendation: "खत शिफारस",
+            fertilizer: "तुमच्या माती आणि पिकांसाठी सर्वात योग्य खतांचा शोध घ्या.",
+            disease_detection: "रोग निदान",
+            disease: "पिकांचे रोग ओळखा आणि त्यांच्यावर उपचारांसाठी शिफारसी मिळवा.",
+            intro_to_agriculture: "कृषीचा परिचय",
+            intro_agri: "शेती, पिके आणि शाश्वत कृषी पद्धतींबद्दल जाणून घ्या.",
+            farming_techniques: "शेतीची तंत्रे",
+            farming_tech: "विविध शेतीच्या पद्धती शोधा आणि तंत्रज्ञान शेतीला अधिक कार्यक्षम कसे बनवत आहे ते जाणून घ्या.",
+            interactive_games: "संवादी खेळ",
+            games: "मजेदार खेळ खेळा जे तुम्हाला पिके कशी उगवायची आणि शेताचे व्यवस्थापन कसे करायचे हे शिकवतात!",
+            sustainable_agriculture: "शाश्वत शेती",
+            sustainability: "शाश्वत शेती पद्धतींचे महत्त्व आणि त्यांच्या पर्यावरणावर होणाऱ्या परिणामांबद्दल समजून घ्या.",
+            soil: "मातीच्या आरोग्याचे महत्त्व आणि चांगल्या पिकांसाठी ते कसे राखावे ते जाणून घ्या.",
+            soil_health: "मातीचे आरोग्य व व्यवस्थापन",
+            future: "कृत्रिम बुद्धिमत्ता आणि आधुनिक तंत्रज्ञान शेतीच्या भविष्याला कसे आकार देत आहे ते शोधा.",
+            future_of_farming: "शेतीचे भविष्य",
+            explore: "शोधा",
+            Educational: "तरुण मनांसाठी शैक्षणिक केंद्र",
+            Education: "लेख, व्हिडिओ आणि मजेदार क्रियाकलापांद्वारे शेतीच्या रोचक जगाचा शोध घ्या!",
+            Contact: "आमच्याशी संपर्क साधा",
+            name: "तुमचे नाव",
+            email: "तुमचा ईमेल",
+            Message: "तुमचा संदेश",
+            Send: "संदेश पाठवा",
+            read: "अधिक वाचा",
+            learn: "अधिक जाणून घ्या",
+            Video: "व्हिडिओ बघा",
+            Play: "आता खेळा",
+
+        }
+    };
+
+    document.getElementById("languageSelect").addEventListener("change", () => {
+        const selectedLanguage = document.getElementById("languageSelect").value;
+        document.querySelectorAll("[data-translate]").forEach(element => {
+            const key = element.getAttribute("data-translate");
+            element.innerText = translations[selectedLanguage][key];
+        });
+    });
+</script>
+
+ <!-- Footer -->
+ <footer class="bg-green-700 text-white p-4 text-center">
+    <p>© 2025 AgroVision. All rights reserved.</p>
+   </footer>
+ 
+
+ </body>
+</html>

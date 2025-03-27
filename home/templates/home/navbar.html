@@ -1,0 +1,29 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AgroVision</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="nav-items">
+            <a href="{% url 'home' %}">{% trans "Home" %}</a>
+            <a href="{% url 'about' %}">{% trans "About" %}</a>
+            <a href="{% url 'contact' %}">{% trans "Contact" %}</a>
+        </div>
+        
+        <!-- Language Switcher -->
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <select name="language" onchange="this.form.submit()">
+                <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+                <option value="hi" {% if LANGUAGE_CODE == 'hi' %}selected{% endif %}>Hindi</option>
+                <option value="mr" {% if LANGUAGE_CODE == 'mr' %}selected{% endif %}>Marathi</option>
+            </select>
+        </form>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>
