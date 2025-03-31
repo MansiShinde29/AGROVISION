@@ -11,21 +11,47 @@
         <h1 style="color: #2e8b57; margin-bottom: 30px; font-size: 2.5em;">Fertilizer Recommendation System</h1>
         <form method="POST">
             {% csrf_token %}
+            
             <div style="margin: 15px 0;">
-                <label for="nitrogen" style="font-size: 1.2em;">Nitrogen (N):</label>
-                <input type="text" id="nitrogen" name="nitrogen" required style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
+                <label for="plant" style="font-size: 1.2em;">Select Crop:</label>
+                 <select id="plant" name="plant" required style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
+                    <option value="Wheat" {% if plant == "Wheat" %}selected{% endif %}>Wheat</option>
+                    <option value="Rice" {% if plant == "Rice" %}selected{% endif %}>Rice</option>
+                    <option value="Sugarcane" {% if plant == "Sugarcane" %}selected{% endif %}>Sugarcane</option>
+                    <option value="Maize" {% if plant == "Maize" %}selected{% endif %}>Maize</option>
+                    <option value="Potato" {% if plant == "Potato" %}selected{% endif %}>Potato</option>
+                    <option value="Groundnut" {% if plant == "Groundnut" %}selected{% endif %}>Groundnut</option>
+                    <option value="Tomato" {% if plant == "Tomato" %}selected{% endif %}>Tomato</option>
+                    <option value="Cotton" {% if plant == "Cotton" %}selected{% endif %}>Cotton</option>
+                    <option value="Soybean" {% if plant == "Soybean" %}selected{% endif %}>Soybean</option>
+                    <option value="Sunflower" {% if plant == "Sunflower" %}selected{% endif %}>Sunflower</option>
+                </select>
             </div>
-
-            <div style="margin: 15px 0;">
-                <label for="phosphorus" style="font-size: 1.2em;">Phosphorus (P):</label>
-                <input type="text" id="phosphorus" name="phosphorus" required style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
-            </div>
-
-            <div style="margin: 15px 0;">
-                <label for="potassium" style="font-size: 1.2em;">Potassium (K):</label>
-                <input type="text" id="potassium" name="potassium" required style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
-            </div>
-
+            
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div style="margin: 15px 0;">
+                    <label for="nitrogen" style="font-size: 1.2em;">Nitrogen (N):</label>
+                    <input type="text" id="nitrogen" name="nitrogen" required 
+                           value="{{ nitrogen }}" 
+                           style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
+                </div>
+            
+                <div style="margin: 15px 0;">
+                    <label for="phosphorus" style="font-size: 1.2em;">Phosphorus (P):</label>
+                    <input type="text" id="phosphorus" name="phosphorus" required 
+                           value="{{ phosphorus }}" 
+                           style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
+                </div>
+            
+                <div style="margin: 15px 0;">
+                    <label for="potassium" style="font-size: 1.2em;">Potassium (K):</label>
+                    <input type="text" id="potassium" name="potassium" required 
+                           value="{{ potassium }}" 
+                           style="width: 60%; padding: 10px; margin: 5px; border: 2px solid #ddd; border-radius: 5px; font-size: 1em;">
+                </div>
+            
             <button type="submit" style="background-color: #2e8b57; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer; margin-top: 20px;">Get Recommendation</button>
         </form>
 

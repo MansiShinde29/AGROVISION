@@ -96,55 +96,83 @@ def crop_recommend(request):
             return HttpResponse(f"Error: {e}")
         
     return render(request, 'home/crop_recommend.html')
+import pickle
+import numpy as np
+import os
+from django.shortcuts import render
 
+# Load the trained fertilizer model
+model_path = os.path.join("home", "models", "fertilizer_model.pkl")
+if os.path.exists(model_path):
+    with open(model_path, "rb") as f:
+        fertilizer_model = pickle.load(f)
+else:
+    fertilizer_model = None
+
+#plant nutrient requirements
+# Nutrient requirements for different plants (adjust these values if needed)
+# plant_nutrient_requirements = {
+#     'Wheat': (120, 60, 40),
+#     'Rice': (100, 50, 30),
+#     'Maize': (150, 70, 50),
+#     'Cotton': (180, 60, 60),
+#     'Sugarcane': (250, 90, 120),
+#     'Soybean': (20, 40, 60),
+#     'Groundnut': (30, 70, 90),
+#     'Sunflower': (60, 90, 90),
+#     'Tomato': (80, 40, 50),
+#     'Potato': (150, 50, 100)
+# }
+
+fertilizer_map = {
+    'Urea': (150, 50, 30),
+    'DAP': (90, 60, 40),
+    'MOP': (50, 40, 90),
+    'Super Phosphate': (80, 70, 20),
+    'Compost': (60, 40, 60),
+    'Organic Manure': (40, 30, 50)
+}
+
+def get_fertilizer(nitrogen, phosphorus, potassium):
+    for fert, (n, p, k) in fertilizer_map.items():
+        if (n - 20) <= nitrogen <= (n + 20) and (p - 10) <= phosphorus <= (p + 10) and (k - 10) <= potassium <= (k + 10):
+            return fert
+    return "No specific fertilizer found. Consider organic manure for general improvement."
+    
 def fertilizer_recommendation(request):
+    plant = ""  # Initialize plant to avoid UnboundLocalError
     if request.method == "POST":
         try:
             nitrogen = float(request.POST['nitrogen'])
             phosphorus = float(request.POST['phosphorus'])
             potassium = float(request.POST['potassium'])
+            plant = request.POST['plant']
 
-            # Define normal ranges for soil nutrients (these can be adjusted if needed)
-            normal_nitrogen = (80, 120)
-            normal_phosphorus = (40, 60)
-            normal_potassium = (40, 80)
+            # Get fertilizer suggestion based on NPK values
+            fertilizer = get_fertilizer(nitrogen, phosphorus, potassium)
 
-            # Suggestions based on nutrient levels
-            suggestions = []
-
-            if nitrogen < normal_nitrogen[0]:
-                suggestions.append("The nitrogen level of your soil is low. Consider using Urea or other nitrogen-rich fertilizers.")
-            elif nitrogen > normal_nitrogen[1]:
-                suggestions.append("The nitrogen level of your soil is high. Avoid using nitrogen-rich fertilizers.")
-
-            if phosphorus < normal_phosphorus[0]:
-                suggestions.append("The phosphorus level of your soil is low. Consider using DAP or organic phosphates.")
-            elif phosphorus > normal_phosphorus[1]:
-                suggestions.append("The phosphorus level of your soil is high. Avoid using phosphorus-based fertilizers.")
-
-            if potassium < normal_potassium[0]:
-                suggestions.append("The potassium level of your soil is low. Try using MOP or natural potash sources like banana peels.")
-            elif potassium > normal_potassium[1]:
-                suggestions.append("The potassium level of your soil is high. Avoid using potassium-rich fertilizers.")
-
-            # If no issues found, proceed with model prediction
-            if not suggestions and fertilizer_model:
-                prediction = fertilizer_model.predict([[nitrogen, phosphorus, potassium]])[0]
-                fertilizer_description = fertilizer_info.get(prediction, "No information available for this fertilizer.")
-            else:
-                prediction = "Soil Condition Analysis Complete"
-                fertilizer_description = "\n".join(suggestions)
+            # Generate a response
+            recommendation = f"Recommended Fertilizer for {plant}: {fertilizer}"
+            suggestions = [
+                "Maintain soil moisture for better absorption.",
+                "Rotate crops to enhance soil fertility.",
+                "Use organic compost to balance micronutrients."
+            ]
+            fertilizer_description = "\n".join(suggestions)
 
         except Exception as e:
-            prediction = f"🚨 Error processing request: {str(e)}"
+            recommendation = f"🚨 Error processing request: {str(e)}"
             fertilizer_description = ""
 
         return render(request, "fertilizer.html", {
-            "recommendation": prediction,
-            "description": fertilizer_description
+            "recommendation": recommendation,
+            "description": fertilizer_description,
+            "plant": plant  # Pass the plant name back to the template
         })
 
-    return render(request, "fertilizer.html")
+    return render(request, "fertilizer.html", {"plant": plant})  # No error now
+
+
 
 # Load disease model
 disease_model_path = os.path.join(BASE_DIR, "home", "models", "disease_model.pkl")
