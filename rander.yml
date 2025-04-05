@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: AgroVision
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn AgroVision.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: AgroVision.settings
+      - key: SECRET_KEY
+        value: 'django-insecure-8h8p4-vt*ld=9)^kcec-_wj$^79p22e)6_=0z)7$*=a!59s_o#'
+      - key: DEBUG
+        value: False
