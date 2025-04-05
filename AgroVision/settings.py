@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-8h8p4-vt*ld=9)^kcec-_wj$^79p22e)6_=0z)7$*=a!59s_o#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['agrovision-50bq.onrender.com']
 
 
 # Application definition
