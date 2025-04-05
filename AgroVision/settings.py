@@ -130,6 +130,13 @@ MEDIA_URL = '/media/'
 import os
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'home/static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# This lets Render collect them
+if os.environ.get('RENDER'):
+    DEBUG = False
+    ALLOWED_HOSTS = ['*']
 
 # Redirect URL after successful login
 LOGIN_REDIRECT_URL = '/home/'  # Change this to your desired redirect URL
